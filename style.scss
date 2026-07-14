@@ -33,14 +33,14 @@
   padding: 0;
 }
 
-// .stage {
-//   display: flex;
-//   justify-content: center;
-//   align-items: flex-start;
-//   padding: 24px 0;
-//   background: radial-gradient(circle at 20% 0%, #eef0f5 0%, #dfe2ea 60%);
-//   min-height: 900px;
-// }
+.stage {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 0;
+  background: radial-gradient(circle at 20% 0%, #eef0f5 0%, #dfe2ea 60%);
+  min-height: 900px;
+}
 
 .phone {
   position: relative;
