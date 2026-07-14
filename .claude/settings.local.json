@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -n \"^<script>$\\\\|^</script>$\" \"banksalad_5screen_flow_1.html\")",
+      "PowerShell(node -v)",
+      "PowerShell(npx --version)",
+      "PowerShell(npx --yes playwright@1.61.1 --version)",
+      "PowerShell($env:PLAYWRIGHT_BROWSERS_PATH=\"0\"; npx --yes playwright@1.61.1 install chromium --with-deps 2>&1 | Select-Object -Last 40)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\JSK\\\\AppData\\\\Local\\\\npm-cache\\\\_npx\" -Directory | ForEach-Object { Get-ChildItem $_.FullName -Directory -Filter node_modules -ErrorAction SilentlyContinue })"
+    ]
+  }
+}

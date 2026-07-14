@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fix-Breaker · 화면2 대시보드</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="stage">
+		<div class="phone" id="phone">
+			<div class="notch"></div>
+			<div class="stack">
+				<!-- ===================== SCREEN 2 ===================== -->
+				<div class="screen active" id="s2">
+					<div class="statusbar"><span>9:41</span><span>🔋 100%</span></div>
+					<div class="screen-scroll">
+						<div class="brand-row standalone">
+							<div class="b-ico">⚡</div>
+							<div class="b-text">Fix-Breaker</div>
+							<div class="b-sub">고정비 브레이커 지수</div>
+						</div>
+						<div class="override-anchor" onclick="openSheet('s3')">반영이 늦어지나요? 직접 편집하기</div>
+						<div class="gauge-wrap">
+							<svg class="gauge-svg" viewBox="0 0 200 200">
+								<circle class="gauge-track" cx="100" cy="100" r="82"></circle>
+								<circle id="gaugeValue" class="gauge-value" cx="100" cy="100" r="82" stroke-dasharray="515"
+									stroke-dashoffset="515" transform="rotate(-90 100 100)"></circle>
+							</svg>
+							<div class="gauge-center">
+								<div class="gauge-score" id="gaugeScore">0점</div>
+								<div class="gauge-label" id="gaugeLabel">분석 중</div>
+							</div>
+							<div class="waste-line" id="wasteLine">&nbsp;</div>
+						</div>
+						<div class="list-header">
+							<h3>내 구독 서비스 목록 (3개)</h3>
+							<div class="sync-btn" onclick="pullRefresh()">⟳</div>
+						</div>
+						<div class="sub-list">
+							<div class="sub-card flagged" onclick="openSheet('s3')">
+								<div class="sub-row">
+									<div class="logo netflix">N</div>
+									<div class="sinfo">
+										<div class="sname">넷플릭스<span class="badge">미사용 30일+</span></div>
+										<div class="sprice" id="netflixPrice">월 17,000원</div>
+									</div>
+									<div class="chev">›</div>
+								</div>
+								<div class="warn-note">3개월간 접속 기록 없음</div>
+							</div>
+							<div class="sub-card" onclick="openSheet('s3')">
+								<div class="sub-row">
+									<div class="logo coupang">C</div>
+									<div class="sinfo">
+										<div class="sname">쿠팡 와우</div>
+										<div class="sprice">월 7,890원</div>
+									</div>
+									<div class="chev">›</div>
+								</div>
+							</div>
+							<div class="sub-card" onclick="openSheet('s3')">
+								<div class="sub-row">
+									<div class="logo youtube">▶</div>
+									<div class="sinfo">
+										<div class="sname">유튜브 프리미엄</div>
+										<div class="sprice">월 14,900원</div>
+									</div>
+									<div class="chev">›</div>
+								</div>
+							</div>
+						</div>
+						<div class="cross-banner" onclick="push('s5')">
+							<p>💡 유저님이 쿠팡+넷플릭스+유튜브에 쓰시는 월 39,790원, 이 카드로 결제 시 매달 최대 4만원까지 할인돼요.</p>
+							<div class="arrow">›</div>
+						</div>
+						<div class="pad-bottom"></div>
+					</div>
+					<div class="tabbar">
+						<div class="tabitem active">
+							<div class="tabdot"></div>홈
+						</div>
+						<div class="tabitem">
+							<div class="tabdot"></div>자산
+						</div>
+						<div class="tabitem">
+							<div class="tabdot"></div>구독
+						</div>
+						<div class="tabitem">
+							<div class="tabdot"></div>혜택
+						</div>
+						<div class="tabitem">
+							<div class="tabdot"></div>마이
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ===================== 화면3: 바텀시트 (개별 구독 상세/보정) ===================== -->
+			<div class="overlay-dim" id="sheetOverlay">
+				<div class="sheet">
+					<div class="sheet-handle"></div>
+					<div class="sheet-brand">
+						<div class="logo netflix">N</div>
+						<div class="meta">
+							<div class="nm">넷플릭스</div>
+							<div class="pay">매월 14일 결제 · 17,000원</div>
+						</div>
+					</div>
+					<div class="form-block">
+						<div class="form-row" style="margin-bottom:10px;">
+							<div class="flbl">실제 결제 금액 직접 수정</div>
+						</div>
+						<div class="direct-input-wrap full"><span class="won">₩</span><input type="number" class="direct-input"
+								id="realPriceInput" value="17000" oninput="updateRealPrice(this)"></div>
+						<div class="direct-hint">자동으로 인식된 금액이 틀렸다면 직접 고쳐주세요</div>
+					</div>
+					<div class="form-block">
+						<div class="form-row">
+							<div class="flbl">가족과 1/N 나누어 내요</div>
+							<div class="toggle" id="splitToggle" onclick="toggleSplitBody(this)"></div>
+						</div>
+						<div class="split-body" id="splitBody">
+							<div class="lbl" style="font-size:11.5px;color:var(--text-2);margin-bottom:8px;">몇 명과 나누어 내시나요?</div>
+							<input type="range" min="1" max="4" value="4" id="sheetSlider" oninput="sheetSplitUpdate(this.value)">
+							<div class="count-result" id="sheetResult">4,250원</div>
+							<div class="direct-row">
+								<span class="direct-lbl">직접 입력</span>
+								<div class="direct-input-wrap"><span class="won">₩</span><input type="number" class="direct-input"
+										id="sheetDirectInput" placeholder="0" oninput="sheetDirectInputFn(this)"></div>
+							</div>
+						</div>
+						<div class="select-row">
+							<div class="flbl">실제 결제일</div>
+							<select id="paySelect">
+								<option>매월 14일</option>
+								<option>매월 1일</option>
+								<option>매월 25일</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-block">
+						<div class="form-row">
+							<div class="flbl">다음 결제 일시중지 예약</div>
+							<div class="toggle" onclick="this.classList.toggle('on')"></div>
+						</div>
+					</div>
+					<div class="split-cta-row">
+						<div class="btn ghost" onclick="saveOverride()">변경 사항 저장</div>
+						<div class="btn danger-ghost" onclick="goCancelFromSheet()">해지하러 가기</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="./script.js"></script>
+	<script>runGaugeIntro();</script>
+</body>
+
+</html>

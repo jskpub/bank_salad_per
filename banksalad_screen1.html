@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fix-Breaker · 화면1 온보딩</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="stage">
+		<div class="phone" id="phone">
+			<div class="notch"></div>
+			<div class="stack">
+				<!-- ===================== SCREEN 1 ===================== -->
+				<div class="screen active" id="s1">
+					<!-- <div class="statusbar"><span>9:41</span><span>🔋 100%</span></div> -->
+					<div class="screen-scroll">
+						<div class="onb-top">
+							<div class="back-btn">←</div>
+							<!-- <div class="page-indicator">1 / 3</div> -->
+							<div class="onb-spacer"></div>
+						</div>
+						<!-- <div class="onb-progress-track">
+							<div class="onb-progress-fill" style="width:33%"></div>
+						</div> -->
+						<div class="head">
+							<div class="mini-brand">⚡ Fix-Breaker</div>
+							<h1>회원님의 구독 서비스를<br><span class="accent">유형별로 분류</span>했어요</h1>
+						</div>
+						<div class="pill-row">
+							<div class="pill-outline"><span class="dot"></span>총 ₩47,790</div>
+							<div class="pill-mint">👥 내 부담 ₩21,007</div>
+						</div>
+						<div class="bento">
+							<div class="bento-tile tile-all on" data-filter="all">
+								<div class="check">✓</div>
+								<div class="t-label">전체</div>
+								<div class="t-count-pill dark">4개</div>
+							</div>
+							<div class="bento-tile" data-filter="media">
+								<div class="check">✓</div>
+								<div class="t-icon">🎬</div>
+								<div class="t-label">미디어</div>
+								<div class="t-count-pill">2개</div>
+								<div class="t-sub">₩32,000</div>
+							</div>
+							<div class="bento-tile" data-filter="shopping">
+								<div class="check">✓</div>
+								<div class="t-icon">🛍</div>
+								<div class="t-label">쇼핑</div>
+								<div class="t-count-pill">1개</div>
+								<div class="t-sub">₩5,000</div>
+							</div>
+							<div class="bento-tile" data-filter="etc">
+								<div class="check">✓</div>
+								<div class="dot-alert"></div>
+								<div class="t-icon">🏋️</div>
+								<div class="t-label">건강</div>
+								<div class="t-count-pill">1개</div>
+								<div class="t-sub">₩110,000</div>
+							</div>
+							<div class="bento-tile tile-total">
+								<div class="t-total-label">월 총액</div>
+								<div class="t-total-val">₩47,790</div>
+								<div class="t-total-sub">4개 구독</div>
+							</div>
+						</div>
+						<div class="sync-list" id="syncList">
+							<div class="sync-card" data-category="media" data-price="17000">
+								<div class="logo netflix">N</div>
+								<div class="sinfo">
+									<div class="sname-row"><span class="sname">Netflix</span><span class="ppl-tag">👤3명</span></div>
+									<div class="pay-compare"><span>매월 <b>₩17,000</b></span><span class="arrow-mini">→</span><span>내 부담 <b
+												class="share">₩5,667</b></span></div>
+								</div>
+								<div class="sactions">
+									<div class="chip" onclick="toggleSplitTrack(this)">👥 3인 분담<span class="cchev">›</span></div>
+								</div>
+								<div class="split-track">
+									<div class="lbl">몇 명과 나누어 내시나요?</div>
+									<input type="range" min="1" max="4" value="3" oninput="onbSplitUpdate(this)">
+									<div class="out">3인 분담 · 5,667원</div>
+									<div class="direct-row">
+										<span class="direct-lbl">직접 입력</span>
+										<div class="direct-input-wrap"><span class="won">₩</span><input type="number" class="direct-input"
+												placeholder="0" oninput="onbDirectInput(this)"></div>
+									</div>
+								</div>
+							</div>
+							<div class="sync-card" data-category="media" data-price="14900">
+								<div class="logo youtube">▶</div>
+								<div class="sinfo">
+									<div class="sname-row"><span class="sname">유튜브 프리미엄</span><span class="ppl-tag">👤2명</span></div>
+									<div class="pay-compare"><span>매월 <b>₩14,900</b></span><span class="arrow-mini">→</span><span>내 부담 <b
+												class="share">₩7,450</b></span></div>
+								</div>
+								<div class="sactions">
+									<div class="chip" onclick="toggleSplitTrack(this)">👥 2인 분담<span class="cchev">›</span></div>
+								</div>
+								<div class="split-track">
+									<div class="lbl">몇 명과 나누어 내시나요?</div>
+									<input type="range" min="1" max="4" value="2" oninput="onbSplitUpdate(this)">
+									<div class="out">2인 분담 · 7,450원</div>
+									<div class="direct-row">
+										<span class="direct-lbl">직접 입력</span>
+										<div class="direct-input-wrap"><span class="won">₩</span><input type="number" class="direct-input"
+												placeholder="0" oninput="onbDirectInput(this)"></div>
+									</div>
+								</div>
+							</div>
+							<div class="sync-card" data-category="shopping" data-price="7890">
+								<div class="logo coupang">C</div>
+								<div class="sinfo">
+									<div class="sname-row"><span class="sname">쿠팡 와우</span><span class="ppl-tag">👤1명</span></div>
+									<div class="pay-compare"><span>매월 <b>₩7,890</b></span><span class="arrow-mini">→</span><span>내 부담 <b
+												class="share">₩7,890</b></span></div>
+								</div>
+								<div class="sactions">
+									<div class="chip" onclick="toggleSplitTrack(this)">혼자 결제<span class="cchev">›</span></div>
+								</div>
+								<div class="split-track">
+									<div class="lbl">몇 명과 나누어 내시나요?</div>
+									<input type="range" min="1" max="4" value="1" oninput="onbSplitUpdate(this)">
+									<div class="ut">1인 분담 · 7,890원</div>
+									<div class="direct-row">
+										<span class="direct-lbl">직접 입력</span>
+										<div class="direct-input-wrap"><span class="won">₩</span><input type="number" class="direct-input"
+												placeholder="0" oninput="onbDirectInput(this)"></div>
+									</div>
+								</div>
+							</div>
+							<div class="sync-card" id="gymCard" data-category="etc" data-price="8000">
+								<div class="logo gym">🏋️</div>
+								<div class="sinfo">
+									<div class="sname">OO 피트니스 1회권</div>
+									<div class="sprice">3/2 · ₩8,000 · 일시 결제 의심</div>
+								</div>
+							</div>
+						</div>
+						<div class="swipe-hint">← 좌측으로 밀면 제외할 수 있어요</div>
+						<div class="pad-bottom"></div>
+					</div>
+					<a class="fixed-cta" href="banksalad_screen2.html">내 고정비 브레이커 시작하기 →</a>
+					<!-- <div class="fixed-cta" onclick="push('s2')">내 고정비 브레이커 시작하기 →</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+
+</html>
