@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fix-Breaker · 화면4 스마트 해지 가이드</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="stage">
+		<div class="phone" id="phone">
+			<div class="notch"></div>
+			<div class="stack">
+				<!-- ===================== SCREEN 4: 스마트 해지 가이드 ===================== -->
+				<div class="screen active" id="s4">
+					<div class="statusbar"><span>9:41</span><span>🔋 100%</span></div>
+					<div class="screen-scroll">
+						<div class="topbar">
+							<a class="back-btn" href="banksalad_screen2.html">←</a>
+							<h2>Fix-Breaker · 스마트 해지 가이드</h2>
+						</div>
+						<div class="cancel-hero">
+							<h2>넷플릭스, 이렇게 3단계면 끝나요</h2>
+							<p>최근 3개월간 접속이 없었어요. 지금 해지하면 다음 달부터 17,000원이 절약돼요.</p>
+						</div>
+
+						<div class="timeline">
+							<div class="tl-step done"><div class="tl-dot">1</div><div class="tl-label">웹 로그인</div></div>
+							<div class="tl-line"></div>
+							<div class="tl-step"><div class="tl-dot">2</div><div class="tl-label">멤버십 관리<br>클릭</div></div>
+							<div class="tl-line"></div>
+							<div class="tl-step"><div class="tl-dot">3</div><div class="tl-label">즉시 해지</div></div>
+						</div>
+
+						<div class="outlink-card">
+							<div class="svc">넷플릭스 해지 페이지로 바로 이동할게요</div>
+							<div class="big-btn" onclick="fakeOutlink()">넷플릭스 멤버십 관리 열기 ↗</div>
+							<div class="clip-row">
+								<span id="clipEmail">bank****@gmail.com</span>
+								<div class="clip-btn" onclick="copyClip(this)">아이디 복사</div>
+							</div>
+						</div>
+
+						<div class="confirm-block">
+							<p>해지를 완료하셨나요?</p>
+							<div class="done-btn" onclick="completeCancel()">해지 완료!</div>
+						</div>
+						<div class="pad-bottom"></div>
+					</div>
+					<div class="confetti-layer" id="confettiLayer"></div>
+					<div class="celebrate-overlay" id="celebrateOverlay">
+						<div class="celebrate">
+							<div class="emoji">🎉</div>
+							<h4>해지 완료!</h4>
+							<div class="stat">+15점 · 연 204,000원 절약 확정</div>
+							<p class="sub">브레이커 지수가 즉시 반영됐어요.</p>
+							<a class="close-btn" href="banksalad_screen2.html">대시보드로 돌아가기</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+
+</html>

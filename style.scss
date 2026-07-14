@@ -487,10 +487,10 @@
   color: var(--mint-text);
   margin-bottom: 4px;
 
-  &.dark {
-    background: rgba(255, 255, 255, 0.14);
-    color: #fff;
-  }
+  // &.dark {
+  //   background: rgba(255, 255, 255, 0.14);
+  //   color: #fff;
+  // }
 }
 .t-sub {
   font-size: 11px;
@@ -1533,4 +1533,9 @@ select {
   margin-top: 16px;
   padding: 0 24px 4px;
   line-height: 1.6;
+}
+
+// customizing
+a {
+  text-decoration: none;
 }

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fix-Breaker · 화면5 고정비 절감 솔루션</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="stage">
+		<div class="phone" id="phone">
+			<div class="notch"></div>
+			<div class="stack">
+				<!-- ===================== SCREEN 5: 고정비 절감 솔루션 ===================== -->
+				<div class="screen active" id="s5">
+					<div class="statusbar"><span>9:41</span><span>🔋 100%</span></div>
+					<div class="screen-scroll" id="s5scroll" onscroll="onS5Scroll()">
+						<div class="topbar">
+							<a class="back-btn" href="banksalad_screen2.html">←</a>
+							<h2>Fix-Breaker · 맞춤형 절감 솔루션</h2>
+						</div>
+
+						<div class="hero-compare">
+							<div class="row">
+								<div class="from"><div class="lbl">기존 고정비</div><div class="val">48,000원</div></div>
+								<div class="arrow-mid">→</div>
+								<div class="to"><div class="lbl">추천 카드 사용 시</div><div class="val">8,000원</div></div>
+							</div>
+							<div class="save-strip">매월 40,000원 세이브</div>
+						</div>
+
+						<div class="match-section">
+							<h3>왜 이 상품을 추천했을까요?</h3>
+							<p class="sub">유저님의 마이데이터 구독 목록과 카드 혜택을 1:1로 매칭했어요</p>
+
+							<div class="match-rate-box">
+								<div class="dotgrid" id="dotgrid"></div>
+								<div class="rtxt"><div class="pct">92%</div><div class="desc">혜택 매칭률<br>상위 5% 궁합이에요</div></div>
+							</div>
+
+							<div class="match-table">
+								<div class="match-row"><div class="logo youtube" style="font-size:12px;">▶</div><div class="mname">유튜브 프리미엄</div><div class="link-ico">↔</div><div class="mbenefit">100% 할인</div></div>
+								<div class="match-row"><div class="logo netflix" style="font-size:12px;">N</div><div class="mname">넷플릭스</div><div class="link-ico">↔</div><div class="mbenefit">100% 할인</div></div>
+								<div class="match-row"><div class="logo coupang" style="font-size:12px;">C</div><div class="mname">쿠팡 와우</div><div class="link-ico">↔</div><div class="mbenefit">적립 10%</div></div>
+							</div>
+						</div>
+						<div class="pad-bottom"></div>
+					</div>
+					<div class="float-save" id="floatSave">+ 0원 저축 중</div>
+					<div class="fixed-cta" onclick="push('s4-signup')">월 40,000원 혜택 받고 시작하기</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+
+</html>

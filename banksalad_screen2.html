@@ -36,7 +36,7 @@
 							<div class="waste-line" id="wasteLine">&nbsp;</div>
 						</div>
 						<div class="list-header">
-							<h3>내 구독 서비스 목록 (3개)</h3>
+							<h3>내 고정 지출 서비스 목록 (3개)</h3>
 							<div class="sync-btn" onclick="pullRefresh()">⟳</div>
 						</div>
 						<div class="sub-list">
@@ -72,10 +72,10 @@
 								</div>
 							</div>
 						</div>
-						<div class="cross-banner" onclick="push('s5')">
+						<a class="cross-banner" href="banksalad_screen5.html">
 							<p>💡 유저님이 쿠팡+넷플릭스+유튜브에 쓰시는 월 39,790원, 이 카드로 결제 시 매달 최대 4만원까지 할인돼요.</p>
 							<div class="arrow">›</div>
-						</div>
+						</a>
 						<div class="pad-bottom"></div>
 					</div>
 					<div class="tabbar">
@@ -86,7 +86,7 @@
 							<div class="tabdot"></div>자산
 						</div>
 						<div class="tabitem">
-							<div class="tabdot"></div>구독
+							<div class="tabdot"></div>고정 지출
 						</div>
 						<div class="tabitem">
 							<div class="tabdot"></div>혜택
@@ -97,7 +97,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- ===================== 화면3: 바텀시트 (개별 구독 상세/보정) ===================== -->
+			<!-- ===================== 화면3: 바텀시트 (개별 고정 지출 상세/보정) ===================== -->
 			<div class="overlay-dim" id="sheetOverlay">
 				<div class="sheet">
 					<div class="sheet-handle"></div>
@@ -148,7 +148,7 @@
 					</div>
 					<div class="split-cta-row">
 						<div class="btn ghost" onclick="saveOverride()">변경 사항 저장</div>
-						<div class="btn danger-ghost" onclick="goCancelFromSheet()">해지하러 가기</div>
+						<div class="btn danger-ghost" onclick="location.href='banksalad_screen4.html'">해지하러 가기</div>
 					</div>
 				</div>
 			</div>

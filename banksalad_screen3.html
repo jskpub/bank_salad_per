@@ -1,75 +1,83 @@
 <!doctype html>
 <html lang="ko">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fix-Breaker · 화면3 구독 상세 편집</title>
-<link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fix-Breaker · 화면3 고정 지출 상세 편집</title>
+	<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="stage">
-  <div class="phone" id="phone">
-    <div class="notch"></div>
-
-    <div class="stack">
-      <!-- ===================== SCREEN 3: 구독 상세/보정 ===================== -->
-      <div class="screen active" id="s3">
-        <div class="statusbar"><span>9:41</span><span>🔋 100%</span></div>
-        <div class="screen-scroll">
-          <div class="topbar"><a class="back-btn" href="banksalad_screen2.html">←</a><h2>Fix-Breaker · 구독 상세 편집</h2></div>
-          <div style="padding:8px 20px 0;">
-            <div class="sheet-brand">
-              <div class="logo netflix">N</div>
-              <div class="meta"><div class="nm">넷플릭스</div><div class="pay">매월 14일 결제 · 17,000원</div></div>
-            </div>
-
-            <div class="form-block">
-              <div class="form-row" style="margin-bottom:10px;">
-                <div class="flbl">실제 결제 금액 직접 수정</div>
-              </div>
-              <div class="direct-input-wrap full"><span class="won">₩</span><input type="number" class="direct-input" id="realPriceInput" value="17000" oninput="updateRealPrice(this)"></div>
-              <div class="direct-hint">자동으로 인식된 금액이 틀렸다면 직접 고쳐주세요</div>
-            </div>
-
-            <div class="form-block">
-              <div class="form-row">
-                <div class="flbl">가족과 1/N 나누어 내요</div>
-                <div class="toggle" id="splitToggle" onclick="toggleSplitBody(this)"></div>
-              </div>
-              <div class="split-body" id="splitBody">
-                <div class="lbl" style="font-size:11.5px;color:var(--text-2);margin-bottom:8px;">몇 명과 나누어 내시나요?</div>
-                <input type="range" min="1" max="4" value="4" id="sheetSlider" oninput="sheetSplitUpdate(this.value)">
-                <div class="count-result" id="sheetResult">4,250원</div>
-                <div class="direct-row">
-                  <span class="direct-lbl">직접 입력</span>
-                  <div class="direct-input-wrap"><span class="won">₩</span><input type="number" class="direct-input" id="sheetDirectInput" placeholder="0" oninput="sheetDirectInputFn(this)"></div>
-                </div>
-              </div>
-              <div class="select-row">
-                <div class="flbl">실제 결제일</div>
-                <select id="paySelect"><option>매월 14일</option><option>매월 1일</option><option>매월 25일</option></select>
-              </div>
-            </div>
-
-            <div class="form-block">
-              <div class="form-row">
-                <div class="flbl">다음 결제 일시중지 예약</div>
-                <div class="toggle" onclick="this.classList.toggle('on')"></div>
-              </div>
-            </div>
-
-            <div class="split-cta-row">
-              <a class="btn ghost" href="banksalad_screen2.html">변경 사항 저장</a>
-              <div class="btn danger-ghost disabled" title="준비 중인 화면입니다">해지하러 가기</div>
-            </div>
-          </div>
-          <div class="pad-bottom"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script src="script.js"></script>
+	<div class="stage">
+		<div class="phone" id="phone">
+			<div class="notch"></div>
+			<div class="stack">
+				<!-- ===================== SCREEN 3: 고정 지출 상세/보정 ===================== -->
+				<div class="screen active" id="s3">
+					<div class="statusbar"><span>9:41</span><span>🔋 100%</span></div>
+					<div class="screen-scroll">
+						<div class="topbar"><a class="back-btn" href="banksalad_screen2.html">←</a>
+							<h2>Fix-Breaker · 고정 지출 상세 편집</h2>
+						</div>
+						<div style="padding:8px 20px 0;">
+							<div class="sheet-brand">
+								<div class="logo netflix">N</div>
+								<div class="meta">
+									<div class="nm">넷플릭스</div>
+									<div class="pay">매월 14일 결제 · 17,000원</div>
+								</div>
+							</div>
+							<div class="form-block">
+								<div class="form-row" style="margin-bottom:10px;">
+									<div class="flbl">실제 결제 금액 직접 수정</div>
+								</div>
+								<div class="direct-input-wrap full"><span class="won">₩</span><input type="number" class="direct-input"
+										id="realPriceInput" value="17000" oninput="updateRealPrice(this)"></div>
+								<div class="direct-hint">자동으로 인식된 금액이 틀렸다면 직접 고쳐주세요</div>
+							</div>
+							<div class="form-block">
+								<div class="form-row">
+									<div class="flbl">가족과 1/N 나누어 내요</div>
+									<div class="toggle" id="splitToggle" onclick="toggleSplitBody(this)"></div>
+								</div>
+								<div class="split-body" id="splitBody">
+									<div class="lbl" style="font-size:11.5px;color:var(--text-2);margin-bottom:8px;">몇 명과 나누어 내시나요?</div>
+									<input type="range" min="1" max="4" value="4" id="sheetSlider" oninput="sheetSplitUpdate(this.value)">
+									<div class="count-result" id="sheetResult">4,250원</div>
+									<div class="direct-row">
+										<span class="direct-lbl">직접 입력</span>
+										<div class="direct-input-wrap"><span class="won">₩</span><input type="number" class="direct-input"
+												id="sheetDirectInput" placeholder="0" oninput="sheetDirectInputFn(this)"></div>
+									</div>
+								</div>
+								<div class="select-row">
+									<div class="flbl">실제 결제일</div>
+									<select id="paySelect">
+										<option>매월 14일</option>
+										<option>매월 1일</option>
+										<option>매월 25일</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-block">
+								<div class="form-row">
+									<div class="flbl">다음 결제 일시중지 예약</div>
+									<div class="toggle" onclick="this.classList.toggle('on')"></div>
+								</div>
+							</div>
+							<div class="split-cta-row">
+								<a class="btn ghost" href="banksalad_screen2.html">변경 사항 저장</a>
+								<a class="btn danger-ghost" href="banksalad_screen4.html">해지하러 가기</a>
+							</div>
+						</div>
+						<div class="pad-bottom"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="script.js"></script>
 </body>
+
 </html>
