@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>스마트 회의 일정 조율 서비스 기획안 (가로형)</title>
+	<!-- Noto Sans KR 폰트 적용 -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+	<style>
+		/* 기본 PDF 및 A4 가로(Landscape) 인쇄 레이아웃 설정 */
+		@page {
+			size: A4 landscape;
+			/* 가로 방향 고정 */
+			margin: 12mm;
+			/* 여백 최적화 */
+		}
+
+		body {
+			font-family: 'Noto Sans KR', sans-serif;
+			color: #2D3748;
+			line-height: 1.5;
+			font-size: 11.5px;
+			/* 가로 배열에 맞는 적정 폰트 크기 */
+			margin: 0 auto;
+			padding: 5px;
+			background-color: #ffffff;
+			max-width: 297mm;
+			/* A4 가로 실제 규격 제한 */
+			box-sizing: border-box;
+		}
+
+		/* 인쇄 시 브라우저 배경색 보존 */
+		* {
+			-webkit-print-color-adjust: exact !important;
+			print-color-adjust: exact !important;
+			box-sizing: border-box;
+		}
+
+		/* 헤더 스타일 */
+		.header {
+			border-bottom: 3px solid #4F46E5;
+			padding-bottom: 10px;
+			margin-bottom: 20px;
+			text-align: left;
+		}
+
+		.header h1 {
+			font-size: 24px;
+			font-weight: 700;
+			color: #1A1F2C;
+			margin: 4px 0 0 0;
+			letter-spacing: -0.5px;
+		}
+
+		.header-tag {
+			display: inline-block;
+			background-color: #EEF2FF;
+			color: #4F46E5;
+			font-size: 9px;
+			font-weight: 700;
+			padding: 2px 6px;
+			border-radius: 4px;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+
+		/* 섹션 스타일 */
+		.section-title {
+			font-size: 15px;
+			color: #1E293B;
+			border-bottom: 1.5px solid #E2E8F0;
+			padding-bottom: 4px;
+			margin-top: 20px;
+			margin-bottom: 12px;
+			font-weight: 700;
+			display: flex;
+			align-items: center;
+			page-break-after: avoid;
+		}
+
+		.section-title::before {
+			content: "";
+			display: inline-block;
+			width: 4px;
+			height: 15px;
+			background-color: #4F46E5;
+			margin-right: 8px;
+			border-radius: 2px;
+		}
+
+		/* 1. 3C 분석: 가로 넓은 3열 레이아웃 */
+		.section-wrap {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 10px;
+			align-items: stretch;
+		}
+
+		/* 2. 4P 전략: 가로가 넓으므로 똑같이 4열 레이아웃으로 변경! */
+		.section-wrap02 {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			/* 4열 배치 */
+			gap: 10px;
+			align-items: stretch;
+		}
+
+		/* 카드 항목 디자인 */
+		.card {
+			background-color: #F8FAFC;
+			border: 1px solid #E2E8F0;
+			border-radius: 6px;
+			padding: 12px 14px;
+			display: flex;
+			flex-direction: column;
+			page-break-inside: avoid;
+		}
+
+		.card-header {
+			font-size: 13px;
+			font-weight: 700;
+			color: #0F172A;
+			border-bottom: 1px solid #E2E8F0;
+			padding-bottom: 6px;
+			margin-bottom: 8px;
+		}
+
+		/* 뱃지 스타일 */
+		.why-badge {
+			font-size: 10px;
+			color: #4F46E5;
+			font-weight: 500;
+			background-color: #EEF2FF;
+			padding: 3px 6px;
+			border-radius: 4px;
+			border: 1px solid #C7D2FE;
+			display: block;
+			margin-top: 6px;
+			line-height: 1.3;
+		}
+
+		/* 본문 텍스트 리스트 */
+		ul {
+			margin: 0;
+			padding-left: 14px;
+		}
+
+		li {
+			margin-bottom: 4px;
+			color: #334155;
+			font-size: 11px;
+		}
+
+		li strong {
+			color: #0F172A;
+			font-weight: 700;
+		}
+
+		/* 대안 일치도 수식 박스 */
+		.formula-box {
+			background-color: #EFF6FF;
+			border-left: 3px solid #3B82F6;
+			border-radius: 4px;
+			padding: 6px 8px;
+			margin: 6px 0;
+			font-family: monospace, sans-serif;
+			font-size: 10px;
+			color: #1E3A8A;
+			font-weight: 600;
+			line-height: 1.3;
+		}
+
+		/* 시스템 문구 예시 박스 */
+		.sub-guide {
+			font-size: 10px;
+			color: #475569;
+			margin-top: 4px;
+			background-color: #FFFBEB;
+			padding: 4px 6px;
+			border-radius: 4px;
+			border-left: 3px solid #F59E0B;
+			line-height: 1.3;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 헤더 영역 -->
+	<div class="header">
+		<h1>"회의날" 3C, 4P분석 </h1>
+	</div>
+	<!-- 1. 3C 분석 -->
+	<div class="section-title">1. 3C 분석</div>
+	<div class="section-wrap">
+		<!-- Customer -->
+		<div class="card">
+			<div class="card-header"> ① Customer (고객) <span class="why-badge">Why: 우리의 진짜 타겟은 누구고, 그들의 진짜 아픔은 무엇인가?</span>
+			</div>
+			<ul>
+				<li><strong>타겟 고객:</strong> 회사에서 회의를 자주 주선하고 참석하는 실무진(PM, 팀장, 비서 등)</li>
+				<li><strong>고객의 Pain Points (아픔):</strong>
+					<ul>
+						<li>동료들의 개인 일정(외근, 사생활 영역 등)을 일일이 확인하는 과정에 피로감을 느낌</li>
+						<li>모두가 만족하는 공통 시간을 찾기 어렵고 조율 과정에서 메신저 핑퐁이 잦음</li>
+						<li>‘선택 참석자’의 일정 조율 시 시스템 부재로 심리적 부채감이 발생함</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<!-- Competitor -->
+		<div class="card">
+			<div class="card-header"> ② Competitor (경쟁 분석) <span class="why-badge">Why: 기존 시장 지배자들의 약점은 무엇인가?</span>
+			</div>
+			<ul>
+				<li><strong>기존 경쟁자 (구글/Zoom/Calendly 등):</strong> 캘린더 연동 기능은 강력하나, "기피 시간 우회" 및 "합리적 대안 제시" 기능 부재</li>
+				<li><strong>우리만의 독보적 차별성 (USP):</strong> 경쟁사들과 달리 "기피 일정 회피율"과 "참석자 가중치"를 조합 연산하여, 구성원들이 한눈에 납득할 수 있는 독자적인 대안
+					적합도 지수(%)를 정량적으로 제시 가능 <div class="sub-guide">* 필수·선택 참석자의 우선순위와 선호·기피 시간을 종합 연산하여, 만장일치가 힘들 때 가장 합리적인 차선책을
+						백분율로 제시 </div>
+				</li>
+			</ul>
+		</div>
+		<!-- Company -->
+		<div class="card">
+			<div class="card-header"> ③ Company (자사 역량) <span class="why-badge">Why: 경쟁사를 이길 수 있는 우리만의 강점은 무엇인가?</span>
+			</div>
+			<ul>
+				<li><strong>실시간 조건 취합 엔진:</strong> 캘린더 동기화 + 원클릭 인풋으로 당일 컨디션 및 회의 성격을 1분 만에 취합</li>
+				<li><strong>심리 장벽 UX 특화:</strong> '선택 참석자'의 불참 의견을 시스템이 대신 전달하는 마이크로카피 제공 <div class="sub-guide">예: "OO 님은 업무
+						집중을 위해 'AI 회의록 수신'을 선택하셨습니다"</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 2. 4P 실행 전략 -->
+	<div class="section-title">2. 4P 실행 전략</div>
+	<div class="section-wrap02">
+		<!-- Product -->
+		<div class="card">
+			<div class="card-header"> ① Product (제품) <span class="why-badge">Why: 제품에 어떤 기능과 가치를 담을 것인가?</span>
+			</div>
+			<ul>
+				<li><strong>대안 일치도(%) 산출 공식:</strong>
+					<div class="formula-box"> 일치도 = 필수(60%) + 선택 가중치(20%) + 기피·선호(20%) </div> 를 연산해 80% 이상의 최적 대안 즉시 제안.
+				</li>
+				<li><strong>스마트 스위치 & Zoom 연동:</strong> '외근 왕복 이동', '퇴근 전 기피' 등 미세 시간 자동 차단 및 예약과 동시 Zoom 링크 자동 연동</li>
+			</ul>
+		</div>
+		<!-- Price -->
+		<div class="card">
+			<div class="card-header"> ② Price (가격) <span class="why-badge">Why: 매출을 극대화할 요금제 구조는?</span>
+			</div>
+			<ul>
+				<li><strong>Free Tier (개인용):</strong> 4인 이하 소규모 조율 지원. 수동 사전 조사 및 단편적인 시간 매칭 중심의 기본 기능 제공</li>
+				<li><strong>Pro Plan (부서/팀용):</strong> 6인 이상 조율 지원. 캘린더 자동 동기화, 기피시간 자동 분석 및 필수/선택 참석자 가중치 매칭 제공</li>
+				<li><strong>Enterprise (전사용):</strong> 회사 내 인프라 직접 연동 및 커스터마이징</li>
+			</ul>
+		</div>
+		<!-- Place -->
+		<div class="card">
+			<div class="card-header"> ③ Place (유통/채널) <span class="why-badge">Why: 고객이 가장 쉽게 만날 채널은?</span>
+			</div>
+			<ul>
+				<li><strong>Zoom 내 임베딩 앱 마켓:</strong> 사용자가 화면 이탈 없이 Zoom 우측 사이드바 안에서 즉시 일정 조율 진행</li>
+				<li><strong>가입 유도 프리패스(Viral):</strong> 개설자만 가입하면, 참석자는 회원가입/설치 없이 링크 공유만으로 3초 만에 참여</li>
+			</ul>
+		</div>
+		<!-- Promotion -->
+		<div class="card">
+			<div class="card-header"> ④ Promotion (홍보/촉진) <span class="why-badge">Why: 구매를 어떻게 이끌어낼 것인가?</span>
+			</div>
+			<ul>
+				<li><strong>Pain-point 마케팅:</strong> "아직도 단톡방에서 '언제 되세요?' 물어보시나요?" 등 실무진 소통 피로감에 집중</li>
+				<li><strong>경험 및 ROI 체감:</strong> 1개월 Pro Plan 무료 체험 및 수동 조율 대비 단축된 시간(예: "이번 달 320분 절약") 시각화 제공</li>
+			</ul>
+		</div>
+	</div>
+</body>
+
+</html>
